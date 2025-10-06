@@ -9,25 +9,25 @@
 const int Fixed::fract_bits = 8;
 
 Fixed::Fixed() : rawBits(0) {
-  std::cout << "Default constructor called" << std::endl;
+  // std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int rawBits) : rawBits(rawBits << fract_bits) {
-  std::cout << "Int constructor called" << std::endl;
+  // std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float rawBits) : rawBits(static_cast<int>(roundf(rawBits * (1 << fract_bits)))) {
-  std::cout << static_cast<int>(roundf(rawBits * (1 << fract_bits))) << std::endl;
-  std::cout << "Float constructor called" << std::endl;
+  // std::cout << static_cast<int>(roundf(rawBits * (1 << fract_bits))) << std::endl;
+  // std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &other) {
-  std::cout << "Copy constructor called" << std::endl;
+  // std::cout << "Copy constructor called" << std::endl;
   *this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-  std::cout << "Copy assignment operator called" << std::endl;
+  // std::cout << "Copy assignment operator called" << std::endl;
   if (this != &other) {
     this->rawBits = other.rawBits;
   }
@@ -35,7 +35,7 @@ Fixed &Fixed::operator=(const Fixed &other) {
 }
 
 int Fixed::getRawBits(void) const {
-  std::cout << "getRawBits member function called" << std::endl;
+  // std::cout << "getRawBits member function called" << std::endl;
   return this->rawBits;
 }
 
@@ -49,7 +49,7 @@ int Fixed::toInt( void ) const {
   return this->rawBits >> fract_bits;
 }
 
-Fixed::~Fixed() { std::cout << "Destructor called" << std::endl; }
+Fixed::~Fixed() {}
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
   out << fixed.toFloat();
